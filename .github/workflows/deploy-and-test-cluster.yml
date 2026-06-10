@@ -20,13 +20,17 @@ jobs:
 
       - name: Create k8s Kind Cluster
         uses: helm/kind-action@v1
-      
-      - name: Deploy application
-        run: |
-          kubectl apply -f k8s/namespace.yml
-          sleep 20
-          kubectl apply -f k8s/db.yml
-          kubectl apply -f k8s/petclinic.yml
+      - name: Apply Namespace
+        run: kubectl apply -f k8s/namespace.yaml
+
+      - name: Apply db and petclinic
+        run: kubectl apply -f k8s/
+      # - name: Deploy application
+      #   run: |
+      #     kubectl apply -f k8s/namespace.yml
+      #     sleep 20
+      #     kubectl apply -f k8s/db.yml
+      #     kubectl apply -f k8s/petclinic.yml
           
 
       - name: Wait for Pods to be ready
