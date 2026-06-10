@@ -23,6 +23,7 @@ jobs:
       - name: Deploy application
         run: |
           kubectl apply -f k8s/
+          sleep 15
 
       - name: Wait for Pods to be ready
         run: |
