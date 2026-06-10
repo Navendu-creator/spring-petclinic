@@ -42,3 +42,9 @@ jobs:
       - name: Debug Pods
         run: |
           kubectl get all -n projects
+
+      - name: Health Check
+        run: |
+          kubectl port-forward service/petclinic 8080:80 -n projects &
+          sleep 10
+          curl -f http://localhost:8080 || exit 1
