@@ -3,11 +3,11 @@ name: Deploy and Test Cluster
 on:
   push:
     branches: [main]
-    paths:
+   # paths:
    #   - 'k8s/**'
   pull_request:
     branches: [main]
-    paths:
+  #  paths:
     #  - 'k8s/**'
 
 jobs:
@@ -29,6 +29,9 @@ jobs:
         run: |
           kubectl apply -f k8s/namespace.yml
           sleep 20
+          
+      - name: Deploy application
+        run: |
           kubectl apply -f k8s/db.yml
           kubectl apply -f k8s/petclinic.yml
           
