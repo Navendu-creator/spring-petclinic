@@ -19,6 +19,8 @@ jobs:
 
       # ✅ Step 1: Namespace
       - name: Create Namespace
+      
+      - name: Deploy application
         run: |
           kubectl apply -f k8s/namespace.yml
 
