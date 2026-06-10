@@ -2,9 +2,9 @@ name: Deploy and Test Cluster
 
 on:
   push:
-    branches: [main]
+    branches: [test]
   pull_request:
-    branches: [main]
+    branches: [test]
 
 jobs:
   deploy-and-test-cluster:
