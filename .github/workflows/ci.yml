@@ -1,11 +1,15 @@
 name: Spring Petclinic CI with SonarQube
 
 on:
-push:
+pull_request:
 branches:
 - main
+types:
+- opened
+- synchronize
+- reopened
 
-pull_request:
+push:
 branches:
 - main
 
@@ -41,7 +45,3 @@ steps:
         -Dsonar.host.url=$SONAR_HOST_URL \
         -Dsonar.token=$SONAR_TOKEN
 ```
-
-
-
-
