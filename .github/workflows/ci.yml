@@ -15,10 +15,9 @@ contents: read
 jobs:
 build-test-sonarqube:
 name: Build, Test and SonarQube Scan
-
-```
 runs-on: [self-hosted, linux, x64, sonar]
 
+```
 steps:
   - name: Checkout repository
     uses: actions/checkout@v4
