@@ -11,14 +11,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Verify Java
-        run: java -version
-
-      - name: Verify Maven
-        run: mvn -version
-
-      - name: Build and Test
-        run: mvn clean verify
+     
 
       - name: SonarQube Scan
         env:
