@@ -2,33 +2,30 @@ name: Spring Petclinic CI with SonarQube
 
 on:
   pull_request:
-   
 
 jobs:
-build-test-sonarqube:
-name: Build, Test and SonarQube Scan
-runs-on: [self-hosted, linux, x64, sonar]
+  build-test-sonarqube:
+    name: Build, Test and SonarQube Scan
+    runs-on: [self-hosted, linux, x64, sonar]
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
+      - name: Verify Java
+        run: java -version
 
-steps:
-  - name: Checkout repository
-    uses: actions/checkout@v4
+      - name: Verify Maven
+        run: mvn -version
 
-  - name: Verify Java
-    run: java -version
+      - name: Build and Test
+        run: mvn clean verify
 
-  - name: Verify Maven
-    run: mvn -version
-
-  - name: Build and Test
-    run: mvn clean verify
-
-  - name: SonarQube Scan
-    env:
-      SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-      SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
-    run: |
-      mvn sonar:sonar \
-        -Dsonar.projectKey=sonar \
-        -Dsonar.host.url=$SONAR_HOST_URL \
-        -Dsonar.token=$SONAR_TOKEN
+      - name: SonarQube Scan
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
+        run: |
+          mvn sonar:sonar \
+            -Dsonar.projectKey=sonar \
+            -Dsonar.host.url=$SONAR_HOST_URL \
+            -Dsonar.token=$SONAR_TOKEN
