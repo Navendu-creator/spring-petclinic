@@ -21,7 +21,6 @@ build-test-sonarqube:
 name: Build, Test and SonarQube Scan
 runs-on: [self-hosted, linux, x64, sonar]
 
-```
 steps:
   - name: Checkout repository
     uses: actions/checkout@v4
@@ -44,4 +43,4 @@ steps:
         -Dsonar.projectKey=sonar \
         -Dsonar.host.url=$SONAR_HOST_URL \
         -Dsonar.token=$SONAR_TOKEN
-```
+
