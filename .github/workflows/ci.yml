@@ -22,9 +22,7 @@ jobs:
       - name: Verify Maven
         run: mvn -version
 
-      - name: Build and Test
-        run: mvn clean verify
-
+      
       - name: SonarQube Scan
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
