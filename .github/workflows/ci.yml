@@ -20,11 +20,7 @@ jobs:
 
       - name: Verify Maven
         run: mvn -version
-      - name: Set up JDK 21 for SonarQube
-        uses: actions/setup-java@v4
-        with:
-          java-version: '21'
-          distribution: 'temurin'
+      
       - name: SonarQube Scan
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
@@ -33,7 +29,7 @@ jobs:
           export JAVA_HOME=/usr/lib/jvm/java-21-openjdk-amd64
           export PATH=$JAVA_HOME/bin:$PATH
           java -version
-          sonar-scanner
+          sonar-scanner -Dsonar.scanner.skipJreProvisioning=true
      
 
 
