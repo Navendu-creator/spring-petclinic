@@ -1,11 +1,10 @@
-name: Spring Petclinic CI with SonarQube
+name: Spring Petclinic CI with SonarQube-Analysis
 
 on:
   pull_request:
   push:
     branches:
       - main
-
 
 jobs:
   build-test-sonarqube:
@@ -15,14 +14,14 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
+
+
       - name: Verify Java
         run: java -version
 
-
-
-
       - name: Verify Maven
         run: mvn -version
+
       
       - name: SonarQube Scan
         env:
@@ -35,6 +34,3 @@ jobs:
             -Dsonar.scanner.skipJreProvisioning=true \
             -Dsonar.host.url=$SONAR_HOST_URL \
             -Dsonar.token=$SONAR_TOKEN
-     
-
-
