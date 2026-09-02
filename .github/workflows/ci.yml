@@ -33,4 +33,4 @@ jobs:
           sonar-scanner \
             -Dsonar.scanner.skipJreProvisioning=true \
             -Dsonar.host.url=$SONAR_HOST_URL \
-            -Dsonar.token=$SONAR_TOKEN
+            -Dsonar.token=sqp_d75921cdbba018a3deac6474806ab33f6fab1c63
