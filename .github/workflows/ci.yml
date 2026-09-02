@@ -25,4 +25,6 @@ jobs:
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
           SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
+          JAVA_HOME: /usr/lib/jvm/java-21-openjdk-amd64
+          PATH: /usr/lib/jvm/java-21-openjdk-amd64/bin:${{ env.PATH }}
         run: sonar-scanner
