@@ -1,11 +1,10 @@
-name: Spring Petclinic CI with SonarQube
+name: Spring Petclinic CI with SonarQube-Analysis
 
 on:
   pull_request:
   push:
     branches:
       - main
-
 
 jobs:
   build-test-sonarqube:
@@ -18,12 +17,12 @@ jobs:
       - name: Verify Java
         run: java -version
 
-
-
-
       - name: Verify Maven
         run: mvn -version
-      
+
+      - name: Build and Test
+        run: mvn clean verify
+
       - name: SonarQube Scan
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
@@ -35,6 +34,3 @@ jobs:
             -Dsonar.scanner.skipJreProvisioning=true \
             -Dsonar.host.url=$SONAR_HOST_URL \
             -Dsonar.token=$SONAR_TOKEN
-     
-
-
