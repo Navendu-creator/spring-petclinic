@@ -21,7 +21,7 @@ jobs:
       - name: Verify Maven
         run: mvn -version
 
-            - name: SonarQube Scan
+      - name: SonarQube Scan
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
           SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
